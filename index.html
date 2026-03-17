@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Santhosh Portfolio</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Progress Bar -->
+
+<div id="progress-bar"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h2>Santhosh Kumar</h2>
+
+<ul id="menu">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="nav-right">
+
+<button class="dark-toggle" onclick="toggleDark()">🌙</button>
+
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+</div>
+
+</nav>
+
+<!-- HOME -->
+
+<section id="home" class="home">
+
+<div class="home-container">
+
+<img src="Santhosh.jpg" class="profile">
+
+<div class="home-text">
+
+<h2>Hello, I'm Santhosh</h2>
+
+<h3 id="typing"></h3>
+
+<div style="display:flex; gap:10px;">
+
+<button class="hire-btn">Hire Me</button>
+
+<a href="Santhosh.pdf" target="_blank">
+<button class="hire-btn">View Resume</button>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="about fade">
+
+<h2>About Me</h2>
+
+<p>
+My name is Santhosh. I am learning Web Development and building projects using HTML, CSS and JavaScript.
+</p>
+
+</section>
+
+<!-- HOBBIES -->
+
+<section class="hobbies fade">
+
+<h2>My Hobbies</h2>
+
+<ul>
+<li>💻 Learn Coding</li>
+<li>🎬 Watching Movies</li>
+<li>🎮 Playing Games</li>
+</ul>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills" class="skills fade">
+
+<h2>My Skills</h2>
+
+<div class="skill">
+<p>HTML <b>90%</b></p>
+<div class="progress">
+<div class="progress-bar html"></div>
+</div>
+</div>
+
+<div class="skill">
+<p>CSS <b>80%</b></p>
+<div class="progress">
+<div class="progress-bar css"></div>
+</div>
+</div>
+
+<div class="skill">
+<p>JavaScript <b>60%</b></p>
+<div class="progress">
+<div class="progress-bar js"></div>
+</div>
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="projects fade">
+
+<h2>My Projects</h2>
+
+<div class="project-container">
+
+<div class="project-card" onclick="openPopup()">
+
+<img src="https://picsum.photos/300/200">
+
+<h3>Portfolio Website</h3>
+
+<p>My first portfolio project.</p>
+
+<div class="project-buttons">
+
+<a href="https://santhoshsk-rgb.github.io/Santhosh-Kumar-Portfolio/" target="_blank">
+<button>Live Demo</button>
+</a>
+
+<a href="https://github.com/santhoshsk-rgb" target="_blank">
+<button>Source Code</button>
+</a>
+
+</div>
+
+</div>
+
+<div class="project-card">
+<img src="https://picsum.photos/301/200">
+<h3>Contact Form</h3>
+<p>Simple HTML contact form.</p>
+</div>
+
+<div class="project-card">
+<img src="https://picsum.photos/302/200">
+<h3>Landing Page</h3>
+<p>Basic landing page design.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- POPUP -->
+
+<div id="popup" class="popup">
+
+<div class="popup-content">
+
+<span class="close" onclick="closePopup()">×</span>
+
+<img src="https://picsum.photos/500/300">
+
+<h3>Portfolio Website</h3>
+
+<p>This project was built using HTML and CSS.</p>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact fade">
+
+<h2>Contact Me</h2>
+
+<form id="contact-form" class="contact-box">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Message" required></textarea>
+
+<button type="submit">Send</button>
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<p>© 2026 Santhosh Kumar</p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// Progress Bar //
+
+window.onscroll = function(){
+
+let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+let scrolled = (winScroll / height) * 100;
+
+document.getElementById("progress-bar").style.width = scrolled + "%";
+
+};
+
+/* MENU */
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
+}
+
+/* DARK MODE */
+
+function toggleDark(){
+document.body.classList.toggle("dark-mode");
+}
+
+/* POPUP */
+
+function openPopup(){
+document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+/* TYPING TEXT */
+
+const text = ["Web Developer","Frontend Learner","Learning AI"];
+
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+(function type(){
+
+if(count === text.length){
+count = 0;
+}
+
+currentText = text[count];
+letter = currentText.slice(0, ++index);
+
+document.getElementById("typing").textContent = letter;
+
+if(letter.length === currentText.length){
+count++;
+index = 0;
+setTimeout(type,1000);
+}
+else{
+setTimeout(type,100);
+}
+
+})();
+
+/* FADE SCROLL */
+
+const faders = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+
+faders.forEach(section => {
+
+const sectionTop = section.getBoundingClientRect().top;
+const screenPosition = window.innerHeight / 1.3;
+
+if(sectionTop < screenPosition){
+section.classList.add("show");
+}
+
+});
+
+});
+
+/* SKILL BAR */
+
+window.addEventListener("scroll",function(){
+
+let skills = document.querySelector(".skills");
+let position = skills.getBoundingClientRect().top;
+let screenPosition = window.innerHeight;
+
+if(position < screenPosition){
+
+document.querySelector(".html").style.width="90%";
+document.querySelector(".css").style.width="80%";
+document.querySelector(".js").style.width="60%";
+
+}
+
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+
+(function(){
+emailjs.init("jV4b-AJmq12ygzcvI");
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+emailjs.sendForm("service_hblk9u7","template_yp3z65v", this)
+.then(function(){
+alert("Message Sent Successfully!");
+}, function(error){
+console.log(error);
+alert("Failed to send message");
+});
+
+});
+
+});
+</script>
+
+</body>
+</html>
